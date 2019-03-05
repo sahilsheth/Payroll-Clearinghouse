@@ -19,7 +19,7 @@ int main()
     readData(individual);
     getCompanies(individual, companyNames);
     printHighestPaid(individual);
-   // separateAndSave(individual, companyNames);
+    separateAndSave(individual, companyNames);
 }
 
 void readData(vector <Person> &workers)
@@ -99,11 +99,42 @@ void printHighestPaid(vector<Person> &workers)
     cout << "Total Pay: $" <<  totalPay << endl;
     
 }
-/*void separateAndSave(vector<Person> &workers, vector<string> &names)
+void separateAndSave(vector<Person> &workers, vector<string> &names)
 {
+    string employeeCompanies;
+    string fullNam;
+    int idNumber;
+    string comp;
+    float totalAmount;
+    float totals;
+    
+    for(int i = 0; i < names.size(); i++)
+    {
+        string listCompany;
+        listCompany = names.at(i);
+        ofstream exitFile;
+        exitFile.open(listCompany + ".txt");
+        exitFile << " -------------------------------------------------------------" << endl;
+        for(int j = 0; j < workers.size(); j++)
+        {
+            employeeCompanies = workers.at(j).getCompanyName();
+            if(employeeCompanies == listCompany)
+            {
+                fullNam = workers.at(j).fullName();
+                idNumber = workers.at(j).getEmployeeId();
+                comp = workers.at(j).getCompanyName();
+                totalAmount = workers.at(j).totalPay();
+                exitFile << fullNam << " " << idNumber << " " << comp << " $" << totalAmount << endl;
+    
+            }
+            
+            totals += workers.at(i).totalPay();
+        }
+        
+        exitFile << "Total: " << "$" << totals << endl;
+    }
     
     
-    
-}*/
+}
 
 
